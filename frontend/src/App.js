@@ -1,22 +1,23 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Adoption from "./pages/Adoption";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Homepage";
+import Adoption from "./pages/Adoption";
 
-function App() {
+export default function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/adoption",
+      element: <Adoption />,
+    },
+   
+  ]);
+  
   return (
-    <Router>
-      <div className="min-h-screen">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/adoption" element={<Adoption />} />
-        </Routes>
-      </div>
-    </Router>
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
   );
 }
-
-export default App;
